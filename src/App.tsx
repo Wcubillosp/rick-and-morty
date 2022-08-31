@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {getFirestore} from 'firebase/firestore'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, HashRouter} from 'react-router-dom'
 import {FirestoreProvider, useFirebaseApp} from 'reactfire'
 
 import Layout from './pages/Layout'
@@ -12,7 +12,7 @@ function App() {
   const firestoreInstance = getFirestore(useFirebaseApp())
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <FirestoreProvider sdk={firestoreInstance}>
         <Routes>
           <Route path='/' element={<Layout />}>
@@ -32,7 +32,7 @@ function App() {
           </Route>
         </Routes>
       </FirestoreProvider>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
